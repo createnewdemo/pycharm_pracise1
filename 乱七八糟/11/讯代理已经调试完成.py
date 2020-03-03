@@ -46,6 +46,7 @@ headers = {
 #
 # c = 0
 # for x in range(1, 1001):
+
 #     url1 = 'http://icanhazip.com/'
 #     response = requests.get(url1, headers=headers, proxies=proxies)
 #     ip = response.text.replace('\n', '')
@@ -109,5 +110,4 @@ def get_page(url):
     print(ip)
 if __name__ == '__main__':
     url = 'http://icanhazip.com/'
-
     get_page(url)
