@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input type="text" name="i1"> +
+    <input type="text" name="i2"> =
+    <input type="text" name="i3">
+    <button id="b1">计算</button>
+    <button id="b2">参数测试</button>
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+
+
+    <script>
+        $('#b1').click(function () {
+            $.ajax({
+                url:'/calc/',
+                type:'get',
+                data:{
+                    'x1':$('[name="i1"]').val(),
+                    'x2':$('[name="i2"]').val(),
+                },
+                success:function (data) {
+                    $('[name="i3"]').val(data)
+
+                }
+            })
+        });
+        $('#b2').click(function () {
+            $.ajax({
+                url:'/test/',
+                type:'get',
+                data:{
+                    name:'李世林',
+                    age:18,
+                    hobby:JSON.stringify(['q','w','e','r'])
+                },
+                success:function (data) {
+                    console.log(data);
+                    console.log(data.stasus);
+
+                }
+            })
+        })
+
+    </script>
+
+</body>
+</html>

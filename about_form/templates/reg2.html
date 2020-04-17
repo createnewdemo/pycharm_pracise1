@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="" method="post" novalidate>
+    {% csrf_token %}
+
+    {#    {{ form_obj.as_p }}#}
+    <p>
+        {#label标签 聚焦#}
+        <label for="{{ form_obj.user.id_for_label }}">{{ form_obj.user.label }}</label>
+        {{ form_obj.user }}
+        <span>{{ form_obj.user.errors.0 }}</span>
+
+    </p>
+    <p>
+        {#label标签 聚焦#}
+        <label for="{{ form_obj.pwd.id_for_label }}">{{ form_obj.pwd.label }}</label>
+        {{ form_obj.pwd }}
+        <span>{{ form_obj.pwd.errors.0 }}</span>
+
+    </p>
+    <p>
+        {#label标签 聚焦#}
+        <label for="{{ form_obj.re_pwd.id_for_label }}">{{ form_obj.re_pwd.label }}</label>
+        {{ form_obj.re_pwd }}
+        <span>{{ form_obj.re_pwd.errors.0 }}</span>
+
+    </p>
+        <p>
+        {#label标签 聚焦#}
+        <label for="{{ form_obj.gender.id_for_label }}">{{ form_obj.gender.label }}</label>
+        {{ form_obj.gender }}
+        <span>{{ form_obj.gender.errors.0 }}</span>
+
+    </p>
+    <p>
+        {#label标签 聚焦#}
+        <label for="{{ form_obj.hobby.id_for_label }}">{{ form_obj.hobby.label }}</label>
+        {{ form_obj.hobby }}
+        <span>{{ form_obj.hobby.errors.0 }}</span>
+
+    </p>
+
+     <p>
+        {#label标签 聚焦#}
+        <label for="{{ form_obj.phone.id_for_label }}">{{ form_obj.phone.label }}</label>
+        {{ form_obj.phone }}
+        <span>{{ form_obj.phone.errors.0 }}</span>
+
+    </p>
+{#    <span>{{ form_obj.errors }}</span>#}
+    <button>注册</button>
+
+
+</form>
+
+
+</body>
+</html>

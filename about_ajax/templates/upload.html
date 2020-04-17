@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="" method="post" enctype="multipart/form-data">
+{% csrf_token %}
+</form>
+
+<input type="file" id="f1">
+<button id="b1">上传</button>
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+<script>
+    $('#b1').click(function () {
+        var formData = new FormData();
+        formData.append('name','lsl');
+        formData.append('f1',$('#f1')[0].files[0]);
+        formData.append('csrfmiddlewaretoken',$('[name="csrfmiddlewaretoken"]').val());
+        {#formData.append('f1',document.getElementById('f1').files);#}
+        {#获取dom对象.files然后取文件#}
+
+        $.ajax({
+            url:'/upload/',
+            type:'post',
+            data:formData,
+            processData: false,// ajax 不处理数据的编码
+            contentType: false,//  不修改content-type的请求头
+            success:function (data) {
+                alert(data)
+
+            }
+
+        })
+    })
+
+
+</script>
+</body>
+</html>

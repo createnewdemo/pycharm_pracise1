@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="" method="post">
+    {% csrf_token %}
+    <p>
+        用户名：<input type="text" name="user" value="{{ user }}"> <span style="color: red">{{ user_error }}</span>
+    </p>
+    <p>
+        密码：<input type="text" name="pwd" value="{{ pwd }}">
+    </p>
+    <button>注册</button>
+
+</form>
+</body>
+</html>
