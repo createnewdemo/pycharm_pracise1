@@ -1,0 +1,36 @@
+{% extends 'dashboard.html' %}
+
+{% block main %}
+    <h1>文章列表</h1>
+
+    <table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>序号</th>
+            <th>id</th>
+            <th>标题</th>
+            <th>分类</th>
+            <th>创建时间</th>
+            <th>发布状态</th>
+            <th>发布状态2</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for article in all_articles %}
+    <tr>
+    <td>{{ forloop.counter }}</td>
+    <td>{{ article.pk }}</td>
+    <td>{{ article.title }}</td>
+    <td>{{ article.category|default:'-' }}</td>
+    <td>{{ article.creat_time }}</td>
+    <td>{{ article.get_publish_status_display }}</td>
+    <td>{{ article.show_publish_status }} </td>
+    </tr>
+    {% endfor %}
+
+    </tbody>
+
+    </table>
+
+
+{% endblock %}

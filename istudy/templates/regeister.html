@@ -1,0 +1,88 @@
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>Title</title>#}
+{#</head>#}
+{#<body>#}
+{#<form action="" method="post" novalidate>#}
+{#    {% csrf_token %}#}
+{#    <p>#}
+{#        <label for="{{ form_ojb.username.id_for_label }}">{{ form_ojb.username.label }}</label>#}
+{#        {{ form_ojb.username }} <span>{{ form_ojb.username.errors.0 }}</span>#}
+{#    </p>#}
+{##}
+{#    <p>#}
+{#        <label for="{{ form_ojb.password.id_for_label }}">{{ form_ojb.password.label }}</label>#}
+{#        {{ form_ojb.password }} <span>{{ form_ojb.password.errors.0 }}</span>#}
+{#    </p>#}
+{##}
+{#    <p>#}
+{#        <label for="{{ form_ojb.re_pwd.id_for_label }}">{{ form_ojb.re_pwd.label }}</label>#}
+{#        {{ form_ojb.re_pwd }} <span>{{ form_ojb.re_pwd.errors.0 }}</span>#}
+{#    </p>#}
+{##}
+{#    <p>#}
+{#        <label for="{{ form_ojb.position.id_for_label }}">{{ form_ojb.position.label }}</label>#}
+{#        {{ form_ojb.position }} <span>{{ form_ojb.position.errors.0 }}</span>#}
+{#    </p>#}
+{##}
+{#    <p>#}
+{#        <label for="{{ form_ojb.company.id_for_label }}">{{ form_ojb.company.label }}</label>#}
+{#        {{ form_ojb.company }} <span>{{ form_ojb.company.errors.0 }}</span>#}
+{#    </p>#}
+{##}
+{#    <p>#}
+{#        <label for="{{ form_ojb.phone.id_for_label }}">{{ form_ojb.phone.label }}</label>#}
+{#        {{ form_ojb.phone }} <span>{{ form_ojb.phone.errors.0 }}</span>#}
+{#    </p>#}
+{##}
+{##}
+{##}
+{#    <button>注册</button>#}
+{##}
+{##}
+{#</form>#}
+{#</body>#}
+{#</html>#}
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>注册丨iStudy</title>
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<body>
+<div class="login-container">
+    <h1>iStudy知识学习平台</h1>
+    <div class="connect">
+        <p>欢迎注册</p>
+    </div>
+    <form action="" method="post" id="loginForm">
+        {% csrf_token %}
+       <div> {{ form_ojb.username }} </div>
+       <div> {{ form_ojb.password }} </div>
+       <div> {{ form_ojb.re_pwd }} </div>
+       <div> {{ form_ojb.phone }} </div>
+        <div> {{ form_ojb.position }} </div>
+        <div> {{ form_ojb.company }} </div>
+
+        <button id="submit" type="submit">注 册</button>
+    </form>
+    <a href="{% url 'login' %}">
+        <button type="button" class="register-tis">有账号，去登陆</button>
+    </a>
+</div>
+</body>
+
+
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/common.js' %}"></script>
+<script src="{% static 'js/supersized.3.2.7.min.js' %}"></script>
+<script src="{% static 'js/supersized-init.js' %}"></script>
+{#<script src="{% static 'js/jquery.validate.min.js' %}"></script>#}
+
+
+</html>

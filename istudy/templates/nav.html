@@ -1,0 +1,27 @@
+<div class="blog-masthead">
+    <div class="container">
+        <nav class="blog-nav">
+            <a class="blog-nav-item active" href="#">Home</a>
+            <a class="blog-nav-item" href="#">New features</a>
+            <a class="blog-nav-item" href="#">Press</a>
+            <a class="blog-nav-item" href="#">New hires</a>
+            <a class="blog-nav-item" href="#">About</a>
+            {% if request.session.is_login %}
+                 <div class="btn-group pull-right" role="group">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                        {{request.session.username}}
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="{% url 'backend' %}">管理中心</a></li>
+                        <li><a href="{% url 'logout' %}">注销</a></li>
+                    </ul>
+                </div>
+            {% else %}
+                <a class="blog-nav-item pull-right" href="{% url 'login' %}?url={{ request.path_info }}">登录</a>
+            {% endif %}
+
+        </nav>
+    </div>
+</div>

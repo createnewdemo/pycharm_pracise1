@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>登陆丨iStudy</title>
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<body>
+<div class="login-container">
+    <h1>iStudy知识学习平台</h1>
+    <div class="connect">
+        <p>欢迎登陆</p>
+    </div>
+    <form action="" method="post" id="loginForm">
+        {% csrf_token %}
+        <div>
+            <input type="text" name="username" class="username" placeholder="用户名" autocomplete="off" value=""/>
+        </div>
+        <div>
+            <input type="password" name="password" class="password" placeholder="密码" oncontextmenu="return false"
+                   onpaste="return false"/>
+        </div>
+        <div style="color: rebeccapurple">{{ error }}</div>
+
+        <button id="submit" type="submit">登 陆</button>
+    </form>
+    <a href="{% url 'register' %}">
+        <button type="button" class="register-tis">还有没有账号？</button>
+    </a>
+</div>
+</body>
+
+
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/common.js' %}"></script>
+<script src="{% static 'js/supersized.3.2.7.min.js' %}"></script>
+<script src="{% static 'js/supersized-init.js' %}"></script>
+{#<script src="{% static 'js/jquery.validate.min.js' %}"></script>#}
+
+
+</html>
