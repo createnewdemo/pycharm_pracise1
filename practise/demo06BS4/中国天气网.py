@@ -42,7 +42,9 @@ def main():
         parse_url(url)
         ALL_DATA.sort(key=lambda data: data['min_temp'], reverse=True)  # 匿名函数
         data = ALL_DATA[0:10]
+        #print(data)
         cities = list(map(lambda x: x['city'], data))
+        print(cities)
         temps = list(map(lambda x: x['min_temp'], data))
         # print(cities)
         # print(temps)

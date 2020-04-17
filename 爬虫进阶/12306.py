@@ -64,7 +64,6 @@ class Qiaopiao(object):
             # 点击了查询按钮以后，等待车次信息是否显示
             WebDriverWait(self.driver, 1000).until(
                 EC.presence_of_element_located((By.XPATH, ".//tbody[@id='queryLeftTable']/tr"))
-
             )
             # 找到所有没有datatran属性的tr标签，这些是存储了车次信息的
             tr_list = self.driver.find_elements_by_xpath(".//tbody[@id='queryLeftTable']/tr[not(@datatran)]")

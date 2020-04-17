@@ -1,0 +1,18 @@
+T1	symptom 680 696	cad/chf
+A1	Assertion T1 Present
+T2	symptom 727 743	his acute gi bleed
+R1	locate Arg1:T1 Arg2:T2	
+T3	symptom 745 752	Itching
+A2	Assertion T3 Present
+R2	locate Arg1:T3 Arg2:T2	
+T4	symptom 856 864	blisters
+A3	Assertion T4 Possible
+A4	Frequence T4 Occasional
+T5	symptom 868 874	ulcers
+A5	Assertion T5 Possible
+A6	Frequence T5 Occasional
+R3	locate Arg1:T4 Arg2:T2	
+R4	locate Arg1:T5 Arg2:T2	
+T6	symptom 930 962	dryness and scaling on the soles
+A7	Assertion T6 Present
+A8	Courses T6 Sudden_onset_or_short_duration

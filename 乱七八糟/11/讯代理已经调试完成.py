@@ -88,26 +88,20 @@ def crawl_xdaili():
     获取讯代理
     :return: 代理
     """
-    url = 'http://api.xdaili.cn/xdaili-api//greatRecharge/getGreatIp?spiderId=62258522ca084c20abccfb1028f6ad7e&orderno=YZ2018626596Oclk48&returnType=2&count=1'
+    url = 'http://api.xdaili.cn/xdaili-api//greatRecharge/getGreatIp?spiderId=d26050ff9c3a495b8256b7b7b7920782&orderno=YZ2018626596Oclk48&returnType=2&count=1'
     r = requests.get(url)
     if r:
         result = json.loads(r.text)
         proxies = result.get('RESULT')
+        print(proxies)
         for proxy in proxies:
-            #print(proxy.get('ip'))
-            #print(proxy.get('port'))
+            print(proxy.get('ip'))
+            print(proxy.get('port'))
             proxies = {
                 'http':'http://' + proxy.get('ip') + ":"+ proxy.get('port')
             }
             print(proxies)
             return proxies
-def get_page(url):
-    proxies = crawl_xdaili()
-    r = requests.get(url)
-    r.encoding = 'utf-8'
-    response = requests.get(url, headers=headers, proxies=proxies, timeout=5)
-    ip = response.text.replace('\n', '')
-    print(ip)
+
 if __name__ == '__main__':
-    url = 'http://icanhazip.com/'
-    get_page(url)
+    crawl_xdaili()

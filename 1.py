@@ -2,7 +2,6 @@
 # -*- coding: gbk -*-
 import time
 
-
 def display_time(func):  # 装饰器  也是一个函数  接下来要运行func这个函数
     def wrapper(*args):  # 这个函数要写的内容是要运行的内容 ：做一下计时  可传入参数
         t1 = time.time()  # 截取时间
@@ -12,7 +11,6 @@ def display_time(func):  # 装饰器  也是一个函数  接下来要运行func
         return result  # 返回函数结果
 
     return wrapper
-
 
 def is_prime(num):
     if num < 2:
@@ -24,7 +22,6 @@ def is_prime(num):
             if num % i == 0:
                 return False
         return True
-
 
 @display_time
 def count_prime_nums(maxnum):

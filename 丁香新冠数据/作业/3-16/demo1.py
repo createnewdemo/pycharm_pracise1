@@ -199,7 +199,7 @@ def draw_multiple_map(month, day):
 
 
 if __name__ == '__main__':
-    m, d = 3, 16
+    m, d = 3, 22
     get_html(m, d)
     create_excel(m, d)
     # count_total_num(m,d)

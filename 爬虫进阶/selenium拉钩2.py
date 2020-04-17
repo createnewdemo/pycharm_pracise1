@@ -14,7 +14,6 @@ class LagouSpider(object):
         self.driver = webdriver.Chrome(executable_path=LagouSpider.driver_path)
         self.url = 'https://www.lagou.com/jobs/list_python?labelWords=&fromSearch=true&suginput='
         self.position = []
-
     def parse_list_page(self, source):  # 解析页面中的每个职位链接 调用self.request_detail_page(link)函数解析
         html = etree.HTML(source)
         links = html.xpath("//a[@class='position_link']/@href")
@@ -23,7 +22,6 @@ class LagouSpider(object):
             self.request_detail_page(link)
             # print("=============爬取第%d条职位信息=========" % index)
             time.sleep(2)
-
     def request_detail_page(self, url):  # 解析出职位的信息url 并调用下一个函数拿出信息
         self.driver.get(url)
         source = self.driver.page_source
