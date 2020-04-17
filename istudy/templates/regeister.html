@@ -60,14 +60,22 @@
     <div class="connect">
         <p>欢迎注册</p>
     </div>
-    <form action="" method="post" id="loginForm">
+    <form action="" method="post" id="loginForm" novalidate enctype="multipart/form-data">
         {% csrf_token %}
-       <div> {{ form_ojb.username }} </div>
-       <div> {{ form_ojb.password }} </div>
-       <div> {{ form_ojb.re_pwd }} </div>
-       <div> {{ form_ojb.phone }} </div>
-        <div> {{ form_ojb.position }} </div>
-        <div> {{ form_ojb.company }} </div>
+        <div> {{ form_ojb.username }}
+            {{ form_ojb.username.errors.0 }}</div>
+        <div> {{ form_ojb.password }}
+            {{ form_ojb.password.errors.0 }}</div>
+        <div> {{ form_ojb.re_pwd }}
+            {{ form_ojb.re_pwd.errors.0 }}</div>
+        <div> {{ form_ojb.phone }}
+            {{ form_ojb.phone.errors.0 }}</div>
+        <div> {{ form_ojb.position }}
+            {{ form_ojb.position.errors.0 }}</div>
+        <div> {{ form_ojb.company }}
+            {{ form_ojb.company.errors.0 }}</div>
+        <div> {{ form_ojb.avatar }}
+            {{ form_ojb.avatar.errors.0 }}</div>
 
         <button id="submit" type="submit">注 册</button>
     </form>

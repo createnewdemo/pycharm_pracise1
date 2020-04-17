@@ -16,7 +16,7 @@ class User(models.Model):
     create_time = models.DateTimeField(auto_now_add=True,verbose_name='注册时间')
     last_time = models.DateTimeField(null=True, blank=True,verbose_name='上次登陆时间')
     is_active = models.BooleanField(default=True)
-
+    avatar = models.ImageField(upload_to='img/avatar', default='img/avatar/default.jpg')
     def __str__(self):
         return self.username
     # class Meta:

@@ -75,21 +75,36 @@ class RegForm(forms.ModelForm):
 class ArticleForm(forms.ModelForm):
 
     class Meta:
-        model = models.Article#只能是model
+        model = models.Article  # 只能是model
         fields = "__all__"
         exclude = ['detail']
         # widgets = {
         #     'title':forms.TextInput(attrs={'class':'form-control'})
         # }
-    def __init__(self,*args,**kwargs):
-        super().__init__(*args,**kwargs)#执行父类方法
 
+    # def __init__(self,request,*args,**kwargs):
+    #     # 获取到用户床来的其他参数request 不要往下面的__init__方法中传了
+    #
+    #     super().__init__(*args,**kwargs)#执行父类方法
+    #     #自定义的操作
+    #     # self.fields 是个有序字典 字典中的值就是字段的对象
+    #     for field in self.fields.values():#field 就是models中定义的字段
+    #         field.widget.attrs['class'] = 'form-control'#field.widgrt
+    #         # 是拿到对应的插件的对象field.widget.attrs 然后拿到对应的属性做修改
+    #     #修改choice参数
+    #     self.fields['author'].choices = [(request.user_obj.pk,request.user_obj.username)]
+    def __init__(self, *args, **kwargs):
+        # 获取到用户床来的其他参数request 不要往下面的__init__方法中传了
 
-        #自定义的操作
+        super().__init__(*args, **kwargs)  # 执行父类方法
+        # 自定义的操作
         # self.fields 是个有序字典 字典中的值就是字段的对象
-        for field in self.fields.values():#field 就是models中定义的字段
-            field.widget.attrs['class'] = 'form-control'#field.widgrt
+        for field in self.fields.values():  # field 就是models中定义的字段
+            field.widget.attrs['class'] = 'form-control'  # field.widgrt
             # 是拿到对应的插件的对象field.widget.attrs 然后拿到对应的属性做修改
+        # 修改choice参数
+
+        self.fields['author'].choices = [(self.instance.author_id, self.instance.author.username)]
 
     # def clean(self):#全局钩子
     #     # form_obj.save()#保存  要插入两张表的内容不用这个

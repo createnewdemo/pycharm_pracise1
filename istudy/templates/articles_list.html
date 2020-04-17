@@ -2,9 +2,9 @@
 
 {% block main %}
     <h1>文章列表</h1>
-
+    <a class="btn btn-primary btn-sm" href="{% url 'article_add' %}"><i class="fa fa-plus"></i></a>
     <table class="table table-bordered table-hover">
-    <thead>
+        <thead>
         <tr>
             <th>序号</th>
             <th>id</th>
@@ -13,22 +13,24 @@
             <th>创建时间</th>
             <th>发布状态</th>
             <th>发布状态2</th>
+            <th>操作</th>
         </tr>
-    </thead>
-    <tbody>
-    {% for article in all_articles %}
-    <tr>
-    <td>{{ forloop.counter }}</td>
-    <td>{{ article.pk }}</td>
-    <td>{{ article.title }}</td>
-    <td>{{ article.category|default:'-' }}</td>
-    <td>{{ article.creat_time }}</td>
-    <td>{{ article.get_publish_status_display }}</td>
-    <td>{{ article.show_publish_status }} </td>
-    </tr>
-    {% endfor %}
+        </thead>
+        <tbody>
+        {% for article in all_articles %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ article.pk }}</td>
+                <td>{{ article.title }}</td>
+                <td>{{ article.category|default:'-' }}</td>
+                <td>{{ article.creat_time }}</td>
+                <td>{{ article.get_publish_status_display }}</td>
+                <td>{{ article.show_publish_status }} </td>
+                <td><a href="{% url 'article_edit' article.pk %}"><i class="fa fa-edit"></i></a></td>
+            </tr>
+        {% endfor %}
 
-    </tbody>
+        </tbody>
 
     </table>
 

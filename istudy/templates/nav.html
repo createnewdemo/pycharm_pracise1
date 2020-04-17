@@ -7,10 +7,11 @@
             <a class="blog-nav-item" href="#">New hires</a>
             <a class="blog-nav-item" href="#">About</a>
             {% if request.session.is_login %}
-                 <div class="btn-group pull-right" role="group">
+                <div class="btn-group pull-right" role="group">
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
-                        {{request.session.username}}
+                        <img width="20px" src="{{ request.user_obj.avatar.url }}" alt="">
+                        {{ request.session.username }}
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
