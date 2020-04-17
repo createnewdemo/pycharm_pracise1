@@ -7,10 +7,11 @@
 
 
         {% for field in form_obj %}
-            <div class="form-group">
+            <div class="form-group {% if field.errors %}has-error{% endif %} ">
                 <label for="{{ field.id_for_label }}" class="col-sm-2 control-label">{{ field.label }}</label>
                 <div class="col-sm-8">
                     {{ field }}
+                    <span class="help-block">{{ field.errors.0 }}</span>
                 </div>
             </div>
         {% endfor %}
@@ -18,7 +19,7 @@
         <div class="form-group">
             <label for="detail" class="col-sm-2 control-label">文章详情</label>
             <div class="col-sm-8">
-                <textarea name="detail" class="form-control" rows="3"  id="detail">
+                <textarea name="detail" class="form-control" rows="3" id="detail">
                     {{ obj.detail.content }}
 
                 </textarea>

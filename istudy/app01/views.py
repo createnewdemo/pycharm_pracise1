@@ -84,17 +84,17 @@ def article_add(request):
         if form_obj.is_valid():
             detail = request.POST.get('detail')
             detail_obj = models.ArticleDetail.objects.create(content=detail)
-
             form_obj.instance.detail_id = detail_obj.pk
             form_obj.save()
-
             return redirect('article_list')
+    return render(request, 'article_add.html', {'form_obj': form_obj})
 
 
-    return render(request,'article_add.html',{'form_obj':form_obj})
-
-
-def article_edit(request,pk):
-    obj = models.Article.objects.filter(pk=pk).first() #查到一个queryset对象 first拿到第一个 如果没有则返回为null
+def article_edit(request, pk):
+    obj = models.Article.objects.filter(pk=pk).first()  # 查到一个queryset对象 first拿到第一个 如果没有则返回为null
     form_obj = ArticleForm(instance=obj)
-    return render(request,'article_edit.html',{'form_obj':form_obj,'obj':obj})
+    if request.method == 'POST':
+        form_obj = ArticleForm(request.POST, instance=obj)  # 包含数据库没修改之前的数据  以及表单提交的数据
+        if form_obj.is_valid():  # 通过校验
+            print(form_obj.cleaned_data)
+    return render(request, 'article_edit.html', {'form_obj': form_obj, 'obj': obj})
